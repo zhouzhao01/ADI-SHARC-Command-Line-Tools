@@ -1,6 +1,6 @@
 # SHARC ADSP Development Workflow
 
-🎯 **Self-contained, portable SHARC ADSP-21593 embedded development environment for Ubuntu Linux**
+🎯 **Self-contained, portable SHARC ADSP embedded development environment for Ubuntu Linux**
 
 ## 🚀 **Quick Setup**
 
