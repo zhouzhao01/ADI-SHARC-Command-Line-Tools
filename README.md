@@ -12,7 +12,7 @@
 ### **Installation**
 ```bash
 # 1. Clone this repository
-git clone <repository-url> sharc-adsp-workflow
+git clone git@github.com:zhouzhao01/ADI-SHARC-Command-Line-Tools.git sharc-adsp-workflow
 cd sharc-adsp-workflow
 
 # 2. Run setup script
@@ -27,11 +27,11 @@ cd sharc-adsp-workflow
 
 ## 📋 **What This Repository Provides**
 
-### **🛠️ Our Custom Tools**
+### **🛠️ Custom Tools**
 - **`sharc_sim`** - Wrapper script for easy SHARC simulation
 - **Setup scripts** - Automated installation and verification
 - **Documentation** - Complete development guides for coding agents
-- **Examples** - Working ADSP-21593 code samples
+- **Examples** - Working minimum ADSP-21593 code samples
 
 ### **📚 Essential Documentation**
 - **`DEVELOPMENT_GUIDE.md`** - Complete workflow documentation
@@ -49,7 +49,7 @@ cd sharc-adsp-workflow
 This repository creates a **portable development environment** that:
 
 1. **Detects existing CCES installation** (`/opt/analog/cces/3.0.3/`)
-2. **Installs our custom tools** (sharc_sim wrapper, scripts)
+2. **Installs custom tools** (sharc_sim wrapper, scripts)
 3. **Provides self-contained documentation** for coding agents
 4. **Includes working examples** and test cases
 
@@ -59,7 +59,7 @@ sharc-adsp-workflow/
 ├── setup.sh                 # Main installation script
 ├── verify.sh                # Installation verification
 ├── tools/
-│   └── sharc_sim            # Our wrapper script
+│   └── sharc_sim            # Wrapper script
 ├── docs/
 │   ├── DEVELOPMENT_GUIDE.md # Complete guide for agents
 │   ├── QUICK_REFERENCE.md   # Command cheat sheet
@@ -95,10 +95,10 @@ After setup, agents can:
 echo -e '#include <stdio.h>\nint main(){printf("Hello ADSP-21593!\\n");return 0;}' > test.c && /opt/analog/cces/3.0.3/cc21k -proc ADSP-21593 -O -o test.dxe test.c && /opt/analog/cces/3.0.3/sharc_sim ADSP-21593 test.dxe
 ```
 
-## 🎯 **Supported Processors**
+## 🎯 **Known Supported Processors**
 
 - **ADSP-21569** - SHARC+ dual-core processor
-- **ADSP-21593** - SHARC+ dual-core processor (primary target)
+- **ADSP-21593** - SHARC+ dual-core processor
 - **ADSP-SC589** - Mixed-signal control processor
 - **ADSP-SC594** - Mixed-signal control processor
 - **ADSP-21573** - SHARC+ quad-core processor
@@ -125,7 +125,7 @@ echo -e '#include <stdio.h>\nint main(){printf("Hello ADSP-21593!\\n");return 0;
 
 ## 🔄 **Version History**
 
-- **v1.0.0** - Initial release with ADSP-21593 support
+- **v0.1.0** - Initial release with ADSP-21593 support
 - Command-line compilation and simulation workflow
 - Self-contained documentation and examples
 - Portable installation scripts
