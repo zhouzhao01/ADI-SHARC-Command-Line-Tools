@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# SHARC Command-Line Simulator Wrapper
+# Usage: sharc_sim <processor> <dxe_file> [options]
+
+CHIPFACTORY="/opt/analog/cces/3.0.3/chipfactory"
+
+# Help function
+show_help() {
+    echo "SHARC Command-Line Simulator Wrapper"
+    echo ""
+    echo "Usage: $0 <processor> <dxe_file> [chipfactory_options]"
+    echo ""
+    echo "Supported processors:"
+    echo "  ADSP-21569   - SHARC+ dual-core processor"
+    echo "  ADSP-21593   - SHARC+ dual-core processor"
+    echo "  ADSP-SC589   - Mixed-signal control processor"
+    echo "  ADSP-SC594   - Mixed-signal control processor" 
+    echo "  ADSP-21573   - SHARC+ quad-core processor"
+    echo "  ADSP-21584   - SHARC+ octa-core processor"
+    echo ""
+    echo "Examples:"
+    echo "  $0 ADSP-21569 audio_program.dxe"
+    echo "  $0 ADSP-SC589 audio_program.dxe -bound-exe-time 10000"
+    echo "  $0 ADSP-21569 audio_program.dxe -quiet"
+    echo ""
+    echo "Additional chipfactory options:"
+    echo "  -bound-exe-time <cycles>  - Limit execution to N cycles"
+    echo "  -quiet                    - Suppress verbose output"
+    echo "  -exit-value              - Check application exit value"
+    echo ""
+}
+
+# Check for help first
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    show_help
+    exit 0
+fi
+
+# Check arguments
+if [ $# -lt 2 ]; then
+    echo "Error: Insufficient arguments"
+    show_help
+    exit 1
+fi
+
+PROCESSOR="$1"
+DXE_FILE="$2"
+shift 2
+
+# Validate processor
+case "$PROCESSOR" in
+    ADSP-21569|ADSP-21593|ADSP-SC589|ADSP-SC594|ADSP-21573|ADSP-21584)
+        ;;
+    *)
+        echo "Error: Unsupported processor '$PROCESSOR'"
+        echo "Run '$0 --help' for supported processors"
+        exit 1
+        ;;
+esac
+
+# Validate DXE file
+if [ ! -f "$DXE_FILE" ]; then
+    echo "Error: DXE file '$DXE_FILE' not found"
+    exit 1
+fi
+
+# Run simulation
+echo "Running SHARC simulation:"
+echo "  Processor: $PROCESSOR"
+echo "  Program:   $DXE_FILE"
+echo ""
+
+exec "$CHIPFACTORY" -proc "$PROCESSOR" "$DXE_FILE" "$@"

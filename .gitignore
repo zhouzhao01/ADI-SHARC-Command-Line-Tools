@@ -1,0 +1,30 @@
+# Compiled files
+*.dxe
+*.doj
+*.ldr
+*.map
+
+# Build artifacts
+linker_log.xml
+build/
+bin/
+obj/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.workspace
+*.project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test outputs
+test_*
+example_output/
